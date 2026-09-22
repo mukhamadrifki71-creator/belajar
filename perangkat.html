@@ -1,1 +1,503 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Perangkat Pembelajaran PAI & BP</title>
 
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #0f5132;
+            --primary-light: #198754;
+            --accent: #d4af37;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --white: #ffffff;
+            --gray: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* HEADER & NAV */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--accent);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .btn-back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            background-color: rgba(15, 81, 50, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .btn-back-home:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        /* BANNER ATAS */
+        .page-banner {
+            background: linear-gradient(135deg, var(--primary), #143223);
+            color: var(--white);
+            padding: 3.5rem 2rem;
+            text-align: center;
+        }
+
+        .page-banner h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-banner p {
+            color: #cbd5e1;
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* KONTEN UTAMA */
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* FILTER & SEARCH BAR */
+        .filter-section {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            margin-bottom: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            outline: none;
+            font-size: 0.95rem;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.2rem;
+            border: 1px solid var(--border);
+            background: var(--white);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--gray);
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        /* TABEL PERANGKAT AJAR */
+        .table-responsive {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        thead {
+            background-color: #f1f5f9;
+            border-bottom: 2px solid var(--border);
+        }
+
+        th {
+            padding: 1.2rem 1.5rem;
+            color: var(--dark);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: middle;
+            font-size: 0.95rem;
+        }
+
+        tbody tr:hover {
+            background-color: #f8fafc;
+        }
+
+        .badge-kelas {
+            background-color: rgba(212, 175, 55, 0.2);
+            color: #856404;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            display: inline-block;
+        }
+
+        .badge-type {
+            background-color: rgba(15, 81, 50, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            display: inline-block;
+        }
+
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .file-icon {
+            font-size: 1.8rem;
+            color: #dc3545; /* Warna icon PDF / Word */
+        }
+
+        .file-details strong {
+            display: block;
+            color: var(--dark);
+        }
+
+        .file-details small {
+            color: var(--gray);
+            font-size: 0.8rem;
+        }
+
+        /* TOMBOL DOWNLOAD */
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-download:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .table-responsive {
+                overflow-x: auto;
+            }
+            .filter-section {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-mosque" style="color: var(--accent);"></i>
+                <span>Ruang Guru PAI</span>
+            </a>
+            <a href="index.html" class="btn-back-home">
+                <i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda
+            </a>
+        </div>
+    </header>
+
+    <!-- BANNER HALAMAN -->
+    <section class="page-banner">
+        <h1><i class="fa-solid fa-folder-open"></i> Perangkat Pembelajaran PAI</h1>
+        <p>Pusat unduhan administrasi guru, Capaian Pembelajaran (CP), TP, ATP, Modul Ajar, Prota, Promes, dan Rubrik Penilaian.</p>
+    </section>
+
+    <!-- KONTEN DAFTAR PERANGKAT -->
+    <div class="container">
+
+        <!-- FILTER & PENCARIAN -->
+        <div class="filter-section">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Cari nama dokumen / perangkat...">
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterKelas('all')">Semua</button>
+                <button class="filter-btn" onclick="filterKelas('Kelas 7')">Kelas 7</button>
+                <button class="filter-btn" onclick="filterKelas('Kelas 8')">Kelas 8</button>
+                <button class="filter-btn" onclick="filterKelas('Kelas 9')">Kelas 9</button>
+            </div>
+        </div>
+
+        <!-- TABEL DOKUMEN -->
+        <div class="table-responsive">
+            <table id="perangkatTable">
+                <thead>
+                    <tr>
+                        <th>Dokumen / Nama Perangkat</th>
+                        <th>Kategori</th>
+                        <th>Kelas</th>
+                        <th>Format</th>
+                        <th style="text-align: center;">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <!-- BARIS DOKUMEN 1: PROTA -->
+                    <tr class="item-row" data-kelas="Kelas 7">
+                        <td>
+                            <div class="file-info">
+                                <i class="fa-solid fa-file-word file-icon" style="color: #0d6efd;"></i>
+                                <div class="file-details">
+                                    <strong>Program Tahunan (PROTA) PAI Kurikulum Merdeka</strong>
+                                    <small>Semester 1 & 2 • Pemetaan Alokasi Waktu</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td><span class="badge-type">PROTA</span></td>
+                        <td><span class="badge-kelas">Kelas 7</span></td>
+                        <td>DOCX</td>
+                        <td style="text-align: center;">
+                            <!-- GANTI LINK DRIVE ANDA DI SINI -->
+                            <a href="https://drive.google.com/file/d/LINK_GOOGLE_DRIVE_ANDA" target="_blank" class="btn-download">
+                                <i class="fa-solid fa-download"></i> Unduh
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- BARIS DOKUMEN 2: PROMES -->
+                    <tr class="item-row" data-kelas="Kelas 7">
+                        <td>
+                            <div class="file-info">
+                                <i class="fa-solid fa-file-excel file-icon" style="color: #198754;"></i>
+                                <div class="file-details">
+                                    <strong>Program Semester (PROMES) PAI & BP</strong>
+                                    <small>Rincian Pekan Efektif & Alokasi Jam Tatap Muka</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td><span class="badge-type">PROMES</span></td>
+                        <td><span class="badge-kelas">Kelas 7</span></td>
+                        <td>XLSX</td>
+                        <td style="text-align: center;">
+                            <a href="https://drive.google.com/file/d/LINK_GOOGLE_DRIVE_ANDA" target="_blank" class="btn-download">
+                                <i class="fa-solid fa-download"></i> Unduh
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- BARIS DOKUMEN 3: MODUL AJAR / RPP -->
+                    <tr class="item-row" data-kelas="Kelas 7">
+                        <td>
+                            <div class="file-info">
+                                <i class="fa-solid fa-file-pdf file-icon" style="color: #dc3545;"></i>
+                                <div class="file-details">
+                                    <strong>Modul Ajar Bab 1: Al-Qur'an Pedoman Hidupku</strong>
+                                    <small>Elemen Al-Qur'an Hadis • 3 Pertemuan</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td><span class="badge-type">Modul Ajar</span></td>
+                        <td><span class="badge-kelas">Kelas 7</span></td>
+                        <td>PDF</td>
+                        <td style="text-align: center;">
+                            <a href="https://drive.google.com/file/d/LINK_GOOGLE_DRIVE_ANDA" target="_blank" class="btn-download">
+                                <i class="fa-solid fa-download"></i> Unduh
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- BARIS DOKUMEN 4: MODUL AJAR KELAS 8 -->
+                    <tr class="item-row" data-kelas="Kelas 8">
+                        <td>
+                            <div class="file-info">
+                                <i class="fa-solid fa-file-word file-icon" style="color: #0d6efd;"></i>
+                                <div class="file-details">
+                                    <strong>Modul Ajar Bab 2: Meneladani Sifat Para Rasul</strong>
+                                    <small>Elemen Akidah • Kurikulum Merdeka</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td><span class="badge-type">Modul Ajar</span></td>
+                        <td><span class="badge-kelas">Kelas 8</span></td>
+                        <td>DOCX</td>
+                        <td style="text-align: center;">
+                            <a href="https://drive.google.com/file/d/LINK_GOOGLE_DRIVE_ANDA" target="_blank" class="btn-download">
+                                <i class="fa-solid fa-download"></i> Unduh
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- BARIS DOKUMEN 5: KALENDER PENDIDIKAN -->
+                    <tr class="item-row" data-kelas="Kelas 9">
+                        <td>
+                            <div class="file-info">
+                                <i class="fa-solid fa-file-pdf file-icon" style="color: #dc3545;"></i>
+                                <div class="file-details">
+                                    <strong>Kaldik & Agenda Hari Besar Islam (PHBI)</strong>
+                                    <small>Kalender Akademik & Agenda Kegiatan Keagamaan</small>
+                                </div>
+                            </div>
+                        </td>
+                        <td><span class="badge-type">Kalender</span></td>
+                        <td><span class="badge-kelas">Kelas 9</span></td>
+                        <td>PDF</td>
+                        <td style="text-align: center;">
+                            <a href="https://drive.google.com/file/d/LINK_GOOGLE_DRIVE_ANDA" target="_blank" class="btn-download">
+                                <i class="fa-solid fa-download"></i> Unduh
+                            </a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Portal Resmi Perangkat Ajar Guru PAI. All Rights Reserved.</p>
+    </footer>
+
+    <!-- SCRIPT FILTER DAN SEARCH -->
+    <script>
+        // Fitur Pencarian
+        function searchTable() {
+            let input = document.getElementById("searchInput").value.toLowerCase();
+            let rows = document.querySelectorAll(".item-row");
+
+            rows.forEach(row => {
+                let text = row.innerText.toLowerCase();
+                if(text.includes(input)) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        }
+
+        // Fitur Filter Kelas
+        function filterKelas(kelas) {
+            let rows = document.querySelectorAll(".item-row");
+            let buttons = document.querySelectorAll(".filter-btn");
+
+            // Ubah tombol aktif
+            buttons.forEach(btn => btn.classList.remove("active"));
+            event.target.classList.add("active");
+
+            // Tampilkan/sembunyikan baris
+            rows.forEach(row => {
+                if(kelas === 'all' || row.getAttribute("data-kelas") === kelas) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
