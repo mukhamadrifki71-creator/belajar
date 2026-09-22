@@ -1,0 +1,64 @@
+<!-- SCRIPT KONEKSI SUPABASE -->
+    <script>
+        // KONEKSI RESMI KE SUPABASE KAMU
+        const SUPABASE_URL = 'https://pfigoreihxbgeqigfgsv.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBmaWdvcmVpaHhiZ2VxaWdmZ3N2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAwODUzODgsImV4cCI6MjEwNTY2MTM4OH0.jPbcbihPPiAtlCmLihHkHWEETWQOeRNEryRwikH2OlQ';
+        
+        const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        // 1. Simpan Data ke Supabase saat Form Diisi
+        document.getElementById('jurnalForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const tanggal = document.getElementById('tanggal').value;
+            const kelas = document.getElementById('kelas').value;
+            const materi = document.getElementById('materi').value;
+            const kegiatan = document.getElementById('kegiatan').value;
+            const catatan = document.getElementById('catatan').value;
+
+            const { data, error } = await _supabase
+                .from('jurnal_mengajar')
+                .insert([{ tanggal, kelas, materi, kegiatan, catatan }]);
+
+            if (error) {
+                alert('Gagal menyimpan ke database: ' + error.message);
+            } else {
+                alert('Alhamdulillah! Jurnal mengajar berhasil disimpan.');
+                document.getElementById('jurnalForm').reset();
+                loadJurnal(); // Update tabel otomatis
+            }
+        });
+
+        // 2. Ambil & Tampilkan Data dari Supabase
+        async function loadJurnal() {
+            const { data, error } = await _supabase
+                .from('jurnal_mengajar')
+                .select('*')
+                .order('tanggal', { ascending: false });
+
+            const tbody = document.getElementById('jurnalData');
+            tbody.innerHTML = '';
+
+            if (error || !data || data.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #a0aec0;">Belum ada catatan jurnal mengajar.</td></tr>';
+                return;
+            }
+
+            data.forEach(item => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${item.tanggal}</td>
+                        <td><strong style="color: #70c745;">${item.kelas}</strong></td>
+                        <td>${item.materi}</td>
+                        <td>${item.kegiatan || '-'}</td>
+                        <td>${item.catatan || '-'}</td>
+                    </tr>
+                `;
+            });
+        }
+
+        // Jalankan pemuatan data saat halaman dibuka
+        loadJurnal();
+    </script>
+</body>
+</html>
