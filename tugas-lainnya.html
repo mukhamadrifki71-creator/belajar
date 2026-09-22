@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas Lainnya - PAInesia</title>
+    <!-- File CSS Utama -->
+    <link rel="stylesheet" href="style.css?v=5">
+    <!-- FontAwesome Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header / Navigasi -->
+    <header>
+        <div class="logo"><i class="fa-solid fa-mosque"></i> PAInesia</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="perangkat.html">Perencanaan Pembelajaran</a></li>
+                <li><a href="pelaksanaan.html">Pelaksanaan Pembelajaran</a></li>
+                <li><a href="tugas-lainnya.html" class="active">Tugas Lainnya</a></li>
+                <li><a href="index.html#contact">Tentang Saya</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Banner Atas Halaman -->
+    <section class="page-header">
+        <h1>Tugas & Tanggung Jawab Lainnya</h1>
+        <p>Pusat administrasi tambahan, keanggotaan profesi, inventarisasi barang sekolah, dan laporan kegiatan keagamaan.</p>
+    </section>
+
+    <!-- Konten Utama Tugas Lainnya -->
+    <section class="container">
+        <h2>Daftar Portofolio & Tugas Tambahan</h2>
+        <p class="section-desc">Klik pada judul menu di bawah untuk melihat rincian dokumen dan tautan terkait.</p>
+
+        <div class="accordion-container">
+
+            <!-- 1. SIAGA PENDIS -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span class="menu-title"><i class="fa-solid fa-id-card icon-menu"></i> Siaga Pendis</span>
+                    <i class="fa-solid fa-chevron-down icon-arrow"></i>
+                </div>
+                <div class="accordion-content">
+                    <p style="color: #cbd5e1; margin-bottom: 1rem;">Administrasi Sistem Informasi dan Administrasi Guru Agama (SIAGA) Kemenag RI, update data berkala, Jadwal Mengajar (JTM), dan Kartu Anggota.</p>
+                    <div class="class-grid">
+                        <a href="https://siagapendis.kemenag.go.id/" target="_blank" class="class-link">Portal SIAGA</a>
+                        <a href="LINK_DRIVE_SK_MENGAJAR" target="_blank" class="class-link">SK Mengajar (JTM)</a>
+                        <a href="LINK_DRIVE_KARTU_SIAGA" target="_blank" class="class-link">Kartu SIAGA</a>
+                        <a href="LINK_DRIVE_BAST_PPKB" target="_blank" class="class-link">Sertifikat / BAST</a>
+                    </div>
+                    <button class="btn-hide" onclick="closeAccordion(this)"><i class="fa-solid fa-eye-slash"></i> Sembunyikan Menu</button>
+                </div>
+            </div>
+
+            <!-- 2. PENGURUS BARANG -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span class="menu-title"><i class="fa-solid fa-boxes-stacked icon-menu"></i> Pengurus Barang / Inventaris</span>
+                    <i class="fa-solid fa-chevron-down icon-arrow"></i>
+                </div>
+                <div class="accordion-content">
+                    <p style="color: #cbd5e1; margin-bottom: 1rem;">Laporan inventarisasi sarana dan prasarana sekolah, Kartu Inventaris Ruangan (KIR), BUKU barang, dan laporan kondisi aset.</p>
+                    <div class="class-grid">
+                        <a href="LINK_DRIVE_SK_PENGURUS_BARANG" target="_blank" class="class-link">SK Pengurus Barang</a>
+                        <a href="LINK_DRIVE_BUKU_INVENTARIS" target="_blank" class="class-link">Buku Inventaris</a>
+                        <a href="LINK_DRIVE_KIR_RUANGAN" target="_blank" class="class-link">KIR Ruangan</a>
+                        <a href="LINK_DRIVE_LAPORAN_ASET" target="_blank" class="class-link">Laporan Aset/BMD</a>
+                    </div>
+                    <button class="btn-hide" onclick="closeAccordion(this)"><i class="fa-solid fa-eye-slash"></i> Sembunyikan Menu</button>
+                </div>
+            </div>
+
+            <!-- 3. JUM'AT AMAL -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span class="menu-title"><i class="fa-solid fa-hand-holding-dollar icon-menu"></i> Jum'at Amal & Infaq Siswa</span>
+                    <i class="fa-solid fa-chevron-down icon-arrow"></i>
+                </div>
+                <div class="accordion-content">
+                    <p style="color: #cbd5e1; margin-bottom: 1rem;">Rekapitulasi penerimaan dan penyaluran dana infaq/sedekah kegiatan Jum'at Amal serta transparansi keuangan keagamaan sekolah.</p>
+                    <div class="class-grid">
+                        <a href="LINK_DRIVE_REKAP_AMAL_2026" target="_blank" class="class-link">Rekap Harian</a>
+                        <a href="LINK_DRIVE_LAPORAN_BULANAN_AMAL" target="_blank" class="class-link">Laporan Bulanan</a>
+                        <a href="LINK_DRIVE_DOKUMENTASI_PENGGUNAAN" target="_blank" class="class-link">Penyaluran Dana</a>
+                    </div>
+                    <button class="btn-hide" onclick="closeAccordion(this)"><i class="fa-solid fa-eye-slash"></i> Sembunyikan Menu</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 PAInesia. Dibuat dengan ❤️ oleh Attaufiqi.</p>
+    </footer>
+
+    <!-- SCRIPT INTERAKTIF ACCORDION -->
+    <script>
+        function toggleAccordion(header) {
+            const item = header.parentElement;
+            item.classList.toggle('active');
+        }
+
+        function closeAccordion(button) {
+            const item = button.closest('.accordion-item');
+            item.classList.remove('active');
+        }
+    </script>
+</body>
+</html>
