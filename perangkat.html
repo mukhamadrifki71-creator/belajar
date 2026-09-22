@@ -4,81 +4,170 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perencanaan Pembelajaran - PAInesia</title>
-    <!-- Menghubungkan ke file CSS yang sama agar tampilan serasi -->
-    <link rel="stylesheet" href="style.css?v=2">
-    <!-- FontAwesome untuk Ikon -->
+    <!-- File CSS Utama -->
+    <link rel="stylesheet" href="style.css?v=4">
+    <!-- FontAwesome Icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
-    <!-- Header / Navigasi (Sama dengan Beranda) -->
+    <!-- Header / Navigasi -->
     <header>
         <div class="logo"><i class="fa-solid fa-mosque"></i> PAInesia</div>
         <nav>
             <ul>
                 <li><a href="index.html">Beranda</a></li>
                 <li><a href="perangkat.html" class="active">Perencanaan Pembelajaran</a></li>
-                <li><a href="index.html#materi">Pelaksanaan Pembelajaran</a></li>
+                <li><a href="pelaksanaan.html">Pelaksanaan Pembelajaran</a></li>
                 <li><a href="index.html#about">Tugas Lainnya</a></li>
                 <li><a href="index.html#contact">Tentang Saya</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Banner / Header Halaman Perencanaan -->
+    <!-- Banner Atas Halaman -->
     <section class="page-header">
         <h1>Perencanaan Pembelajaran</h1>
-        <p>Pusat unduhan dan dokumen administrasi Guru PAI: Kalender Pendidikan, Program Tahunan (PROTA), dan Program Semester (PROMES).</p>
+        <p>Pusat dokumen dan instrumen Kurikulum Merdeka PAI: Kaldik, PROTA, PROMES, CP, Analisis CP, ATP, dan Modul Ajar (Fase A - C / Kelas 1 - 6).</p>
     </section>
 
-    <!-- Konten Perangkat Pembelajaran -->
+    <!-- Konten Utama Perencanaan -->
     <section class="container">
-        <h2>Dokumen Administrasi</h2>
+        <h2>Daftar Dokumen Perencanaan</h2>
+        <p class="section-desc">Klik pada judul menu di bawah untuk menampilkan atau menyembunyikan daftar kelas (Kelas 1 - Kelas 6).</p>
 
-        <div class="card-grid">
+        <div class="accordion-container">
 
-            <!-- Card 1: Kalender Pendidikan -->
-            <div class="card card-perangkat">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-calendar-days icon"></i>
+            <!-- 1. KALENDER PENDIDIKAN -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span class="menu-title"><i class="fa-solid fa-calendar-days icon-menu"></i> Kalender Pendidikan (Kaldik)</span>
+                    <i class="fa-solid fa-chevron-down icon-arrow"></i>
                 </div>
-                <h3>Kalender Pendidikan</h3>
-                <p>Jadwal hari efektif, pekan efektif, libur semester, dan agenda hari besar Islam (PHBI) tahun ajaran berjalan.</p>
-                <div class="card-action">
-                    <!-- GANTI LINK DRIVE DI SINI -->
-                    <a href="https://drive.google.com/file/d/LINK_GOOGLE_DRIVE_KALENDER" target="_blank" class="btn-primary">
-                        <i class="fa-solid fa-download"></i> Unduh Kaldik
-                    </a>
+                <div class="accordion-content">
+                    <div class="class-grid">
+                        <a href="LINK_DRIVE_KALDIK_K1" target="_blank" class="class-link">Kelas 1</a>
+                        <a href="LINK_DRIVE_KALDIK_K2" target="_blank" class="class-link">Kelas 2</a>
+                        <a href="LINK_DRIVE_KALDIK_K3" target="_blank" class="class-link">Kelas 3</a>
+                        <a href="LINK_DRIVE_KALDIK_K4" target="_blank" class="class-link">Kelas 4</a>
+                        <a href="LINK_DRIVE_KALDIK_K5" target="_blank" class="class-link">Kelas 5</a>
+                        <a href="LINK_DRIVE_KALDIK_K6" target="_blank" class="class-link">Kelas 6</a>
+                    </div>
+                    <button class="btn-hide" onclick="closeAccordion(this)"><i class="fa-solid fa-eye-slash"></i> Sembunyikan Kelas</button>
                 </div>
             </div>
 
-            <!-- Card 2: Program Tahunan (PROTA) -->
-            <div class="card card-perangkat">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-calendar-check icon"></i>
+            <!-- 2. PROGRAM TAHUNAN (PROTA) -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span class="menu-title"><i class="fa-solid fa-calendar-check icon-menu"></i> Program Tahunan (PROTA)</span>
+                    <i class="fa-solid fa-chevron-down icon-arrow"></i>
                 </div>
-                <h3>Program Tahunan (PROTA)</h3>
-                <p>Pemetaan alokasi waktu pembelajaran selama satu tahun ajaran penuh untuk mencapai Capaian Pembelajaran (CP).</p>
-                <div class="card-action">
-                    <!-- GANTI LINK DRIVE DI SINI -->
-                    <a href="https://drive.google.com/file/d/LINK_GOOGLE_DRIVE_PROTA" target="_blank" class="btn-primary">
-                        <i class="fa-solid fa-download"></i> Unduh PROTA
-                    </a>
+                <div class="accordion-content">
+                    <div class="class-grid">
+                        <a href="LINK_DRIVE_PROTA_K1" target="_blank" class="class-link">Kelas 1</a>
+                        <a href="LINK_DRIVE_PROTA_K2" target="_blank" class="class-link">Kelas 2</a>
+                        <a href="LINK_DRIVE_PROTA_K3" target="_blank" class="class-link">Kelas 3</a>
+                        <a href="LINK_DRIVE_PROTA_K4" target="_blank" class="class-link">Kelas 4</a>
+                        <a href="LINK_DRIVE_PROTA_K5" target="_blank" class="class-link">Kelas 5</a>
+                        <a href="LINK_DRIVE_PROTA_K6" target="_blank" class="class-link">Kelas 6</a>
+                    </div>
+                    <button class="btn-hide" onclick="closeAccordion(this)"><i class="fa-solid fa-eye-slash"></i> Sembunyikan Kelas</button>
                 </div>
             </div>
 
-            <!-- Card 3: Program Semester (PROMES) -->
-            <div class="card card-perangkat">
-                <div class="icon-wrapper">
-                    <i class="fa-solid fa-table-list icon"></i>
+            <!-- 3. PROGRAM SEMESTER (PROMES) -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span class="menu-title"><i class="fa-solid fa-table-list icon-menu"></i> Program Semester (PROMES)</span>
+                    <i class="fa-solid fa-chevron-down icon-arrow"></i>
                 </div>
-                <h3>Program Semester (PROMES)</h3>
-                <p>Rincian pemetaan materi dan alokasi jam tatap muka mingguan untuk Semester 1 dan Semester 2.</p>
-                <div class="card-action">
-                    <!-- GANTI LINK DRIVE DI SINI -->
-                    <a href="https://drive.google.com/file/d/LINK_GOOGLE_DRIVE_PROMES" target="_blank" class="btn-primary">
-                        <i class="fa-solid fa-download"></i> Unduh PROMES
-                    </a>
+                <div class="accordion-content">
+                    <div class="class-grid">
+                        <a href="LINK_DRIVE_PROMES_K1" target="_blank" class="class-link">Kelas 1</a>
+                        <a href="LINK_DRIVE_PROMES_K2" target="_blank" class="class-link">Kelas 2</a>
+                        <a href="LINK_DRIVE_PROMES_K3" target="_blank" class="class-link">Kelas 3</a>
+                        <a href="LINK_DRIVE_PROMES_K4" target="_blank" class="class-link">Kelas 4</a>
+                        <a href="LINK_DRIVE_PROMES_K5" target="_blank" class="class-link">Kelas 5</a>
+                        <a href="LINK_DRIVE_PROMES_K6" target="_blank" class="class-link">Kelas 6</a>
+                    </div>
+                    <button class="btn-hide" onclick="closeAccordion(this)"><i class="fa-solid fa-eye-slash"></i> Sembunyikan Kelas</button>
+                </div>
+            </div>
+
+            <!-- 4. CAPAIAN PEMBELAJARAN (CP) -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span class="menu-title"><i class="fa-solid fa-bullseye icon-menu"></i> Capaian Pembelajaran (CP)</span>
+                    <i class="fa-solid fa-chevron-down icon-arrow"></i>
+                </div>
+                <div class="accordion-content">
+                    <div class="class-grid">
+                        <a href="LINK_DRIVE_CP_K1" target="_blank" class="class-link">Kelas 1</a>
+                        <a href="LINK_DRIVE_CP_K2" target="_blank" class="class-link">Kelas 2</a>
+                        <a href="LINK_DRIVE_CP_K3" target="_blank" class="class-link">Kelas 3</a>
+                        <a href="LINK_DRIVE_CP_K4" target="_blank" class="class-link">Kelas 4</a>
+                        <a href="LINK_DRIVE_CP_K5" target="_blank" class="class-link">Kelas 5</a>
+                        <a href="LINK_DRIVE_CP_K6" target="_blank" class="class-link">Kelas 6</a>
+                    </div>
+                    <button class="btn-hide" onclick="closeAccordion(this)"><i class="fa-solid fa-eye-slash"></i> Sembunyikan Kelas</button>
+                </div>
+            </div>
+
+            <!-- 5. ANALISIS CAPAIAN PEMBELAJARAN -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span class="menu-title"><i class="fa-solid fa-chart-pie icon-menu"></i> Analisis Capaian Pembelajaran</span>
+                    <i class="fa-solid fa-chevron-down icon-arrow"></i>
+                </div>
+                <div class="accordion-content">
+                    <div class="class-grid">
+                        <a href="LINK_DRIVE_ANALISIS_K1" target="_blank" class="class-link">Kelas 1</a>
+                        <a href="LINK_DRIVE_ANALISIS_K2" target="_blank" class="class-link">Kelas 2</a>
+                        <a href="LINK_DRIVE_ANALISIS_K3" target="_blank" class="class-link">Kelas 3</a>
+                        <a href="LINK_DRIVE_ANALISIS_K4" target="_blank" class="class-link">Kelas 4</a>
+                        <a href="LINK_DRIVE_ANALISIS_K5" target="_blank" class="class-link">Kelas 5</a>
+                        <a href="LINK_DRIVE_ANALISIS_K6" target="_blank" class="class-link">Kelas 6</a>
+                    </div>
+                    <button class="btn-hide" onclick="closeAccordion(this)"><i class="fa-solid fa-eye-slash"></i> Sembunyikan Kelas</button>
+                </div>
+            </div>
+
+            <!-- 6. ALUR TUJUAN PEMBELAJARAN (ATP) -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span class="menu-title"><i class="fa-solid fa-route icon-menu"></i> Alur Tujuan Pembelajaran (ATP)</span>
+                    <i class="fa-solid fa-chevron-down icon-arrow"></i>
+                </div>
+                <div class="accordion-content">
+                    <div class="class-grid">
+                        <a href="LINK_DRIVE_ATP_K1" target="_blank" class="class-link">Kelas 1</a>
+                        <a href="LINK_DRIVE_ATP_K2" target="_blank" class="class-link">Kelas 2</a>
+                        <a href="LINK_DRIVE_ATP_K3" target="_blank" class="class-link">Kelas 3</a>
+                        <a href="LINK_DRIVE_ATP_K4" target="_blank" class="class-link">Kelas 4</a>
+                        <a href="LINK_DRIVE_ATP_K5" target="_blank" class="class-link">Kelas 5</a>
+                        <a href="LINK_DRIVE_ATP_K6" target="_blank" class="class-link">Kelas 6</a>
+                    </div>
+                    <button class="btn-hide" onclick="closeAccordion(this)"><i class="fa-solid fa-eye-slash"></i> Sembunyikan Kelas</button>
+                </div>
+            </div>
+
+            <!-- 7. MODUL AJAR -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span class="menu-title"><i class="fa-solid fa-book-open icon-menu"></i> Modul Ajar</span>
+                    <i class="fa-solid fa-chevron-down icon-arrow"></i>
+                </div>
+                <div class="accordion-content">
+                    <div class="class-grid">
+                        <a href="LINK_DRIVE_MODUL_K1" target="_blank" class="class-link">Kelas 1</a>
+                        <a href="LINK_DRIVE_MODUL_K2" target="_blank" class="class-link">Kelas 2</a>
+                        <a href="LINK_DRIVE_MODUL_K3" target="_blank" class="class-link">Kelas 3</a>
+                        <a href="LINK_DRIVE_MODUL_K4" target="_blank" class="class-link">Kelas 4</a>
+                        <a href="LINK_DRIVE_MODUL_K5" target="_blank" class="class-link">Kelas 5</a>
+                        <a href="LINK_DRIVE_MODUL_K6" target="_blank" class="class-link">Kelas 6</a>
+                    </div>
+                    <button class="btn-hide" onclick="closeAccordion(this)"><i class="fa-solid fa-eye-slash"></i> Sembunyikan Kelas</button>
                 </div>
             </div>
 
@@ -90,5 +179,17 @@
         <p>&copy; 2026 PAInesia. Dibuat dengan ❤️ oleh Attaufiqi.</p>
     </footer>
 
+    <!-- SCRIPT INTERAKTIF ACCORDION -->
+    <script>
+        function toggleAccordion(header) {
+            const item = header.parentElement;
+            item.classList.toggle('active');
+        }
+
+        function closeAccordion(button) {
+            const item = button.closest('.accordion-item');
+            item.classList.remove('active');
+        }
+    </script>
 </body>
 </html>
