@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pelaksanaan Pembelajaran - PAInesia</title>
     <!-- File CSS Utama -->
-    <link rel="stylesheet" href="style.css?v=9">
+    <link rel="stylesheet" href="style.css?v=10">
     <!-- FontAwesome Icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- SDK Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <style>
-        /* STYLING MODAL JURNAL (POP-UP SUPABASE) */
+        /* STYLING MODAL JURNAL (INPUT & TABEL SUPABASE) */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -51,7 +51,7 @@
 
         .modal-header h3 {
             color: #ffffff;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
         }
 
         .btn-close {
@@ -60,13 +60,41 @@
             color: #a0aec0;
             font-size: 1.5rem;
             cursor: pointer;
-            transition: color 0.2s;
         }
 
-        .btn-close:hover {
-            color: #ef4444;
+        .btn-close:hover { color: #ef4444; }
+
+        /* FORM INPUT INSIDE MODAL */
+        .form-jurnal-box {
+            background-color: #242424;
+            padding: 1.2rem;
+            border-radius: 8px;
+            border: 1px solid #3d3d3d;
+            margin-bottom: 2rem;
         }
 
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; margin-bottom: 0.4rem; color: #e2e8f0; font-size: 0.85rem; font-weight: 600; }
+        .form-control {
+            width: 100%;
+            padding: 0.65rem;
+            background-color: #1a1a1a;
+            border: 1px solid #3d3d3d;
+            border-radius: 6px;
+            color: #ffffff;
+            outline: none;
+            font-size: 0.9rem;
+        }
+        .form-control:focus { border-color: #70c745; }
+
+        /* TABEL RIWAYAT JURNAL */
         .table-jurnal {
             width: 100%;
             border-collapse: collapse;
@@ -81,13 +109,10 @@
             border-bottom: 1px solid #333;
             text-align: left;
             color: #e2e8f0;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
-        .table-jurnal th {
-            background-color: #242424;
-            color: #70c745;
-        }
+        .table-jurnal th { background-color: #2a2a2a; color: #70c745; }
     </style>
 </head>
 <body>
@@ -101,7 +126,6 @@
                 <li><a href="perangkat.html">Perencanaan Pembelajaran</a></li>
                 <li><a href="pelaksanaan.html" class="active">Pelaksanaan Pembelajaran</a></li>
                 <li><a href="tugas-lainnya.html">Tugas Lainnya</a></li>
-                <li><a href="jurnal.html">Input Jurnal</a></li>
                 <li><a href="index.html#contact">Tentang Saya</a></li>
             </ul>
         </nav>
@@ -110,7 +134,7 @@
     <!-- Banner Atas Halaman -->
     <section class="page-header">
         <h1>Pelaksanaan Pembelajaran</h1>
-        <p>Instrumen Pendukung KBM: Bahan Ajar, LKPD, Daftar Nilai (Kelas 1–6), dan Jurnal Harian Supabase.</p>
+        <p>Instrumen Pendukung KBM: Bahan Ajar, LKPD, Daftar Nilai (Kelas 1–6), serta Input & Riwayat Jurnal Harian.</p>
     </section>
 
     <!-- Konten Utama Pelaksanaan -->
@@ -127,7 +151,7 @@
                     <i class="fa-solid fa-chevron-down icon-arrow"></i>
                 </div>
                 <div class="accordion-content">
-                    <p style="color: #a0aec0; font-size: 0.9rem; margin-bottom: 1rem;">Pilih kelas untuk mengunduh modul bacaan siswa, presentasi PPT, atau bahan ajar interaktif PAI:</p>
+                    <p style="color: #a0aec0; font-size: 0.9rem; margin-bottom: 1rem;">Pilih kelas untuk mengunduh modul bacaan siswa atau bahan ajar PAI:</p>
                     <div class="class-grid">
                         <a href="LINK_DRIVE_BAHAN_K1" target="_blank" class="class-link">Kelas 1</a>
                         <a href="LINK_DRIVE_BAHAN_K2" target="_blank" class="class-link">Kelas 2</a>
@@ -147,7 +171,7 @@
                     <i class="fa-solid fa-chevron-down icon-arrow"></i>
                 </div>
                 <div class="accordion-content">
-                    <p style="color: #a0aec0; font-size: 0.9rem; margin-bottom: 1rem;">Pilih kelas untuk mengunduh lembar kerja tugas individu dan kelompok PAI:</p>
+                    <p style="color: #a0aec0; font-size: 0.9rem; margin-bottom: 1rem;">Pilih kelas untuk mengunduh lembar kerja tugas PAI:</p>
                     <div class="class-grid">
                         <a href="LINK_DRIVE_LKPD_K1" target="_blank" class="class-link">Kelas 1</a>
                         <a href="LINK_DRIVE_LKPD_K2" target="_blank" class="class-link">Kelas 2</a>
@@ -167,7 +191,7 @@
                     <i class="fa-solid fa-chevron-down icon-arrow"></i>
                 </div>
                 <div class="accordion-content">
-                    <p style="color: #a0aec0; font-size: 0.9rem; margin-bottom: 1rem;">Pilih kelas untuk mengunduh format rekap nilai formatif, sumatif, dan asesmen diagnostik PAI:</p>
+                    <p style="color: #a0aec0; font-size: 0.9rem; margin-bottom: 1rem;">Pilih kelas untuk mengunduh format rekap nilai PAI:</p>
                     <div class="class-grid">
                         <a href="LINK_DRIVE_NILAI_K1" target="_blank" class="class-link">Kelas 1</a>
                         <a href="LINK_DRIVE_NILAI_K2" target="_blank" class="class-link">Kelas 2</a>
@@ -180,34 +204,68 @@
                 </div>
             </div>
 
-            <!-- 4. JURNAL MENGAJAR GURU (SUPABASE INTEGRATION) -->
+            <!-- 4. JURNAL MENGAJAR GURU -->
             <div class="accordion-item" style="border-color: #70c745;">
                 <div style="background-color: #27381e; padding: 1.2rem 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
                     <span class="menu-title" style="color: #70c745;"><i class="fa-solid fa-book-bookmark icon-menu"></i> Jurnal Mengajar Guru (Real-Time)</span>
-                    <div style="display: flex; gap: 10px;">
-                        <button onclick="bukaModalJurnal()" class="btn-primary" style="padding: 0.4rem 1rem; font-size: 0.8rem; cursor: pointer;">
-                            <i class="fa-solid fa-eye"></i> Lihat Jurnal
-                        </button>
-                        <a href="jurnal.html" class="btn-primary" style="padding: 0.4rem 1rem; font-size: 0.8rem; text-decoration: none; background-color: #ffffff; color: #121212;">
-                            <i class="fa-solid fa-plus"></i> Input Jurnal
-                        </a>
-                    </div>
+                    <button onclick="bukaModalJurnal()" class="btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; cursor: pointer;">
+                        <i class="fa-solid fa-pen-to-square"></i> Input & Lihat Jurnal
+                    </button>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- MODAL POP-UP TABEL JURNAL (SUPABASE) -->
+    <!-- MODAL POP-UP (INPUT FORM + TABEL RIWAYAT JURNAL) -->
     <div id="modalJurnal" class="modal-overlay">
         <div class="modal-content">
             <div class="modal-header">
-                <h3><i class="fa-solid fa-book-bookmark" style="color: #70c745;"></i> Riwayat Jurnal Mengajar</h3>
+                <h3><i class="fa-solid fa-book-bookmark" style="color: #70c745;"></i> Kelola Jurnal Mengajar Harian</h3>
                 <button onclick="tutupModalJurnal()" class="btn-close"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <p style="color: #a0aec0; font-size: 0.9rem;">Data catatan harian KBM yang diambil langsung dari database Supabase secara real-time.</p>
-            
-            <div style="overflow-x: auto; margin-top: 1rem;">
+
+            <!-- FORM INPUT JURNAL -->
+            <div class="form-jurnal-box">
+                <h4 style="color: #70c745; margin-bottom: 1rem;"><i class="fa-solid fa-plus-circle"></i> Input Catatan Baru</h4>
+                <form id="jurnalFormPelaksanaan">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Tanggal Mengajar</label>
+                            <input type="date" id="tanggal" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Pilih Kelas</label>
+                            <select id="kelas" class="form-control" required>
+                                <option value="">-- Pilih --</option>
+                                <option value="Kelas 1">Kelas 1</option>
+                                <option value="Kelas 2">Kelas 2</option>
+                                <option value="Kelas 3">Kelas 3</option>
+                                <option value="Kelas 4">Kelas 4</option>
+                                <option value="Kelas 5">Kelas 5</option>
+                                <option value="Kelas 6">Kelas 6</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Materi / Pokok Bahasan</label>
+                        <input type="text" id="materi" class="form-control" placeholder="Contoh: QS. Al-Hujurat Ayat 13" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Kegiatan Pembelajaran</label>
+                        <textarea id="kegiatan" class="form-control" rows="2" placeholder="Ringkasan KBM di kelas..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Catatan / Kendala Siswa</label>
+                        <input type="text" id="catatan" class="form-control" placeholder="Catatan khusus siswa...">
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%;"><i class="fa-solid fa-paper-plane"></i> Simpan ke Supabase</button>
+                </form>
+            </div>
+
+            <!-- TABEL RIWAYAT JURNAL -->
+            <h4 style="color: #ffffff; margin-bottom: 0.5rem;"><i class="fa-solid fa-clock-rotate-left"></i> Riwayat Jurnal</h4>
+            <div style="overflow-x: auto;">
                 <table class="table-jurnal">
                     <thead>
                         <tr>
@@ -219,15 +277,9 @@
                         </tr>
                     </thead>
                     <tbody id="jurnalDataModal">
-                        <tr><td colspan="5" style="text-align: center; color: #a0aec0;">Memuat data dari Supabase...</td></tr>
+                        <tr><td colspan="5" style="text-align: center; color: #a0aec0;">Memuat data...</td></tr>
                     </tbody>
                 </table>
-            </div>
-            
-            <div style="margin-top: 1.5rem; text-align: right;">
-                <a href="jurnal.html" class="btn-primary" style="text-decoration: none; font-size: 0.85rem;">
-                    <i class="fa-solid fa-plus"></i> Form Input Jurnal
-                </a>
             </div>
         </div>
     </div>
@@ -237,10 +289,10 @@
         <p>&copy; 2026 PAInesia. Dibuat dengan ❤️ oleh Attaufiqi.</p>
     </footer>
 
-    <!-- SCRIPT ACCORDION DAN KONEKSI SUPABASE -->
+    <!-- SCRIPT ACCORDION & KONEKSI SUPABASE -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Event Listener untuk Buka/Tutup Accordion
+            // Event Buka/Tutup Accordion Kelas
             const headers = document.querySelectorAll('.accordion-header');
             headers.forEach(header => {
                 header.addEventListener('click', function () {
@@ -249,7 +301,7 @@
                 });
             });
 
-            // Event Listener untuk Tombol Sembunyikan Kelas
+            // Event Tombol Sembunyikan
             const hideButtons = document.querySelectorAll('.btn-hide');
             hideButtons.forEach(button => {
                 button.addEventListener('click', function () {
@@ -259,10 +311,9 @@
             });
         });
 
-        // KREDENSIAL SUPABASE
+        // SUPABASE KREDENSIAL
         const SUPABASE_URL = 'https://pfigoreihxbgeqigfgsv.supabase.co';
         const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBmaWdvcmVpaHhiZ2VxaWdmZ3N2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAwODUzODgsImV4cCI6MjEwNTY2MTM4OH0.jPbcbihPPiAtlCmLihHkHWEETWQOeRNEryRwikH2OlQ';
-        
         const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
         function bukaModalJurnal() {
@@ -274,9 +325,10 @@
             document.getElementById('modalJurnal').style.display = 'none';
         }
 
+        // AMBIL DATA DARI SUPABASE
         async function loadJurnalModal() {
             const tbody = document.getElementById('jurnalDataModal');
-            tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #a0aec0;">Memuat data dari Supabase...</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #a0aec0;">Memuat data...</td></tr>';
 
             const { data, error } = await _supabase
                 .from('jurnal_mengajar')
@@ -286,7 +338,7 @@
             tbody.innerHTML = '';
 
             if (error || !data || data.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #a0aec0;">Belum ada catatan jurnal mengajar.</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #a0aec0;">Belum ada catatan jurnal.</td></tr>';
                 return;
             }
 
@@ -302,6 +354,29 @@
                 `;
             });
         }
+
+        // SIMPAN DATA KE SUPABASE
+        document.getElementById('jurnalFormPelaksanaan').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const tanggal = document.getElementById('tanggal').value;
+            const kelas = document.getElementById('kelas').value;
+            const materi = document.getElementById('materi').value;
+            const kegiatan = document.getElementById('kegiatan').value;
+            const catatan = document.getElementById('catatan').value;
+
+            const { data, error } = await _supabase
+                .from('jurnal_mengajar')
+                .insert([{ tanggal, kelas, materi, kegiatan, catatan }]);
+
+            if (error) {
+                alert('Gagal menyimpan: ' + error.message);
+            } else {
+                alert('Alhamdulillah, Jurnal Berhasil Disimpan!');
+                document.getElementById('jurnalFormPelaksanaan').reset();
+                loadJurnalModal(); // Refresh tabel
+            }
+        });
     </script>
 </body>
 </html>
