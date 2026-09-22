@@ -232,3 +232,68 @@ footer {
         font-size: 2rem;
     }
 }
+/* TAMBAHAN UNTUK HALAMAN PERENCANAAN PEMBELAJARAN */
+
+/* Banner Atas Halaman */
+.page-header {
+    background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
+                url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=1600') center/cover no-repeat;
+    padding: 8rem 2rem 4rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 0.8rem;
+}
+
+.page-header p {
+    color: #a0aec0;
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1rem;
+}
+
+/* Navigasi Aktif */
+nav a.active {
+    color: #70c745;
+}
+
+/* Penyesuaian Kartu Perangkat */
+.card-perangkat {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.icon-wrapper {
+    background-color: rgba(112, 199, 69, 0.1);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.2rem;
+}
+
+.icon-wrapper .icon {
+    font-size: 1.8rem;
+    margin-bottom: 0;
+}
+
+.card-action {
+    margin-top: 1.5rem;
+}
+
+.card-action .btn-primary {
+    width: 100%;
+    padding: 0.65rem 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
