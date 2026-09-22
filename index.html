@@ -3,18 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Attaufiqi</title>
+    <title>PAInesia - Portal Guru & Pembelajaran PAI</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Menggunakan FontAwesome untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
     <!-- Header / Navigasi -->
     <header>
-        <div class="logo">PAInesia</div>
+        <div class="logo"><i class="fa-solid fa-mosque"></i> PAInesia</div>
         <nav>
             <ul>
-                <li><a href="#perangkat.html">Beranda</a></li>
-                <li><a href="#about">perangkat</a></li>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="perangkat.html">Perangkat Ajar</a></li>
+                <li><a href="#materi">Materi Ajar</a></li>
+                <li><a href="#about">Tentang Saya</a></li>
                 <li><a href="#contact">Kontak</a></li>
             </ul>
         </nav>
@@ -22,26 +26,62 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <h1>assalamualaikum 👋</h1>
-        <p>Ini adalah website pertama kali saya belajar di github.</p>
-        <button id="btnKlik">Klik Saya!</button>
+        <h1>Assalamu’alaikum Warahmatullahi Wabarakatuh 👋</h1>
+        <p>Selamat datang di <strong>PAInesia</strong>, portal pembelajaran Pendidikan Agama Islam dan media berbagi perangkat ajar guru.</p>
+        <div class="hero-buttons">
+            <a href="perangkat.html" class="btn-primary">Lihat Perangkat Ajar</a>
+            <button id="btnKlik" class="btn-secondary">Klik Saya!</button>
+        </div>
     </section>
 
-    <!-- Tentang Section -->
+    <!-- Menu Baru: Fitur Utama -->
+    <section id="features" class="container">
+        <h2>Layanan Utama</h2>
+        <div class="card-grid">
+            <div class="card">
+                <i class="fa-solid fa-folder-open icon"></i>
+                <h3>Administrasi Guru</h3>
+                <p>Unduh Prota, Promes, Modul Ajar, dan Kalender Pendidikan yang sudah tersusun rapi.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-book-quran icon"></i>
+                <h3>Bahan Ajar Siswa</h3>
+                <p>Materi pembelajaran interaktif untuk elemen Al-Qur'an Hadis, Akidah Akhlak, Fikih, dan SKI.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Baru: Materi Ajar Ringkas -->
+    <section id="materi" class="container bg-light">
+        <h2>Materi Pembelajaran PAI</h2>
+        <p>Akses cepat ke materi pembelajaran kelas:</p>
+        <ul>
+            <li><strong>Kelas 7:</strong> Al-Qur'an Pedoman Hidupku & Meneladani Asmaul Husna</li>
+            <li><strong>Kelas 8:</strong> Meyakini Kitab-Kitab Allah & Indahnya Berbusana Muslim</li>
+            <li><strong>Kelas 9:</strong> Mari Menyambut Hari Akhir & Menghormati Orang Tua</li>
+        </ul>
+    </section>
+
+    <!-- Tentang Saya Section (Diperbarui) -->
     <section id="about" class="container">
         <h2>Tentang Saya</h2>
-        <p>Saya sedang belajar web development dan mencoba mengonlinekan website menggunakan GitHub. Website ini menggunakan HTML, CSS, dan JavaScript sederhana.</p>
+        <p>Saya adalah seorang Guru Pendidikan Agama Islam (PAI) yang berdedikasi untuk mengembangkan media pembelajaran berbasis digital. Website <strong>PAInesia</strong> ini dibuat menggunakan HTML, CSS, dan JavaScript yang di-hosting langsung melalui GitHub Pages untuk memudahkan siswa dan sesama rekan sejawat dalam mengakses administrasi serta materi pembelajaran.</p>
     </section>
 
-    <!-- Kontak Section -->
+    <!-- Kontak Section (Diperbarui) -->
     <section id="contact" class="container bg-light">
         <h2>Hubungi Saya</h2>
-        <p>Email: <a href="mailto:email@contoh.com">email@contoh.com</a></p>
+        <p>Jika Anda memiliki pertanyaan seputar materi ajar, saran, atau ingin bersilaturahmi, silakan hubungi kontak di bawah ini:</p>
+        <ul class="contact-list">
+            <li><i class="fa-solid fa-envelope"></i> <strong>Email:</strong> guru.pai@sekolah.sch.id</li>
+            <li><i class="fa-brands fa-whatsapp"></i> <strong>WhatsApp:</strong> +62 812-3456-7890</li>
+            <li><i class="fa-solid fa-location-dot"></i> <strong>Unit Kerja:</strong> SMP/SMA Negeri</li>
+        </ul>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Dibuat dengan ❤️ oleh Saya.</p>
+        <p>&copy; 2026 PAInesia. Dibuat dengan ❤️ oleh Attaufiqi.</p>
     </footer>
 
     <script src="script.js"></script>
