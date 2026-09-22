@@ -5,9 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pelaksanaan Pembelajaran - PAInesia</title>
     <!-- File CSS Utama -->
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="stylesheet" href="style.css?v=7">
     <!-- FontAwesome Icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- SDK Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <style>
+        /* STYLING MODAL JURNAL (POP-UP) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 1rem;
+        }
+
+        .modal-content {
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 900px;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 2rem;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-header h3 {
+            color: #ffffff;
+            font-size: 1.4rem;
+        }
+
+        .btn-close {
+            background: none;
+            border: none;
+            color: #a0aec0;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .btn-close:hover {
+            color: #ef4444;
+        }
+
+        /* TABEL SUPABASE IN-MODAL */
+        .table-jurnal {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .table-jurnal th, .table-jurnal td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid #333;
+            text-align: left;
+            color: #e2e8f0;
+            font-size: 0.9rem;
+        }
+
+        .table-jurnal th {
+            background-color: #242424;
+            color: #70c745;
+        }
+    </style>
 </head>
 <body>
 
@@ -19,7 +101,7 @@
                 <li><a href="index.html">Beranda</a></li>
                 <li><a href="perangkat.html">Perencanaan Pembelajaran</a></li>
                 <li><a href="pelaksanaan.html" class="active">Pelaksanaan Pembelajaran</a></li>
-                <li><a href="index.html#about">Tugas Lainnya</a></li>
+                <li><a href="tugas-lainnya.html">Tugas Lainnya</a></li>
                 <li><a href="index.html#contact">Tentang Saya</a></li>
             </ul>
         </nav>
@@ -45,7 +127,7 @@
                 <h3>Materi & Bahan Ajar</h3>
                 <p>Modul bacaan siswa, materi presentasi PPT, dan ringkasan bahan ajar PAI interaktif per elemen.</p>
                 <div class="card-action">
-                    <a href="https://drive.google.com/file/d/LINK_GOOGLE_DRIVE_BAHAN_AJAR" target="_blank" class="btn-primary">
+                    <a href="LINK_GOOGLE_DRIVE_BAHAN_AJAR" target="_blank" class="btn-primary">
                         <i class="fa-solid fa-download"></i> Unduh Bahan Ajar
                     </a>
                 </div>
@@ -59,23 +141,24 @@
                 <h3>Lembar Kerja (LKPD)</h3>
                 <p>Lembar Kerja Peserta Didik berbasis tugas individu dan kelompok untuk mengukur pemahaman materi.</p>
                 <div class="card-action">
-                    <a href="https://drive.google.com/file/d/LINK_GOOGLE_DRIVE_LKPD" target="_blank" class="btn-primary">
+                    <a href="LINK_GOOGLE_DRIVE_LKPD" target="_blank" class="btn-primary">
                         <i class="fa-solid fa-download"></i> Unduh LKPD
                     </a>
                 </div>
             </div>
 
-            <!-- Card 3: Jurnal Mengajar -->
+            <!-- Card 3: Jurnal Mengajar (DENGAN TOMBOL SUPABASE POP-UP) -->
             <div class="card card-perangkat">
                 <div class="icon-wrapper">
                     <i class="fa-solid fa-book-bookmark icon"></i>
                 </div>
                 <h3>Jurnal Mengajar Guru</h3>
-                <p>Catatan harian keterlaksanaan pembelajaran, pencapaian materi, serta rekap kegiatan kelas.</p>
+                <p>Catatan harian keterlaksanaan pembelajaran, pencapaian materi, serta rekap kegiatan kelas harian.</p>
                 <div class="card-action">
-                    <a href="https://drive.google.com/file/d/LINK_GOOGLE_DRIVE_JURNAL" target="_blank" class="btn-primary">
-                        <i class="fa-solid fa-download"></i> Unduh Jurnal
-                    </a>
+                    <!-- Tombol ini memicu fungsi bukaModalJurnal() -->
+                    <button onclick="bukaModalJurnal()" class="btn-primary" style="cursor: pointer;">
+                        <i class="fa-solid fa-eye"></i> Lihat Jurnal Harian
+                    </button>
                 </div>
             </div>
 
@@ -87,7 +170,7 @@
                 <h3>Daftar Nilai & Asesmen</h3>
                 <p>Format rekap nilai formatif, sumatif, rubrik penilaian sikap, dan asesmen diagnostik PAI.</p>
                 <div class="card-action">
-                    <a href="https://drive.google.com/file/d/LINK_GOOGLE_DRIVE_NILAI" target="_blank" class="btn-primary">
+                    <a href="LINK_GOOGLE_DRIVE_NILAI" target="_blank" class="btn-primary">
                         <i class="fa-solid fa-download"></i> Unduh Format Nilai
                     </a>
                 </div>
@@ -101,7 +184,7 @@
                 <h3>Presensi & Media Pembelajaran</h3>
                 <p>Daftar hadir siswa, lembar observasi sikap sholat/pembiasaan, serta link media pembelajaran interaktif.</p>
                 <div class="card-action">
-                    <a href="https://drive.google.com/file/d/LINK_GOOGLE_DRIVE_PRESENSI" target="_blank" class="btn-primary">
+                    <a href="LINK_GOOGLE_DRIVE_PRESENSI" target="_blank" class="btn-primary">
                         <i class="fa-solid fa-download"></i> Unduh Presensi
                     </a>
                 </div>
@@ -110,10 +193,93 @@
         </div>
     </section>
 
+    <!-- MODAL POP-UP TABEL JURNAL (SUPABASE) -->
+    <div id="modalJurnal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-book-bookmark" style="color: #70c745;"></i> Riwayat Jurnal Mengajar</h3>
+                <button onclick="tutupModalJurnal()" class="btn-close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <p style="color: #a0aec0; font-size: 0.9rem;">Data catatan harian KBM yang diambil langsung dari database Supabase secara real-time.</p>
+            
+            <div style="overflow-x: auto; margin-top: 1rem;">
+                <table class="table-jurnal">
+                    <thead>
+                        <tr>
+                            <th>Tanggal</th>
+                            <th>Kelas</th>
+                            <th>Materi</th>
+                            <th>Kegiatan</th>
+                            <th>Catatan</th>
+                        </tr>
+                    </thead>
+                    <tbody id="jurnalDataModal">
+                        <tr><td colspan="5" style="text-align: center; color: #a0aec0;">Memuat data dari Supabase...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div style="margin-top: 1.5rem; text-align: right;">
+                <a href="jurnal.html" class="btn-primary" style="text-decoration: none; font-size: 0.85rem;">
+                    <i class="fa-solid fa-plus"></i> Input Jurnal Baru
+                </a>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <p>&copy; 2026 PAInesia. Dibuat dengan ❤️ oleh Attaufiqi.</p>
     </footer>
 
+    <!-- SCRIPT KONEKSI SUPABASE & MODAL POP-UP -->
+    <script>
+        // KREDENSIAL SUPABASE
+        const SUPABASE_URL = 'https://pfigoreihxbgeqigfgsv.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBmaWdvcmVpaHhiZ2VxaWdmZ3N2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAwODUzODgsImV4cCI6MjEwNTY2MTM4OH0.jPbcbihPPiAtlCmLihHkHWEETWQOeRNEryRwikH2OlQ';
+        
+        const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        // Buka Pop-up Modal Jurnal
+        function bukaModalJurnal() {
+            document.getElementById('modalJurnal').style.display = 'flex';
+            loadJurnalModal(); // Ambil data Supabase
+        }
+
+        // Tutup Pop-up Modal Jurnal
+        function tutupModalJurnal() {
+            document.getElementById('modalJurnal').style.display = 'none';
+        }
+
+        // Ambil Data Jurnal dari Supabase
+        async function loadJurnalModal() {
+            const tbody = document.getElementById('jurnalDataModal');
+            tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #a0aec0;">Memuat data dari Supabase...</td></tr>';
+
+            const { data, error } = await _supabase
+                .from('jurnal_mengajar')
+                .select('*')
+                .order('tanggal', { ascending: false });
+
+            tbody.innerHTML = '';
+
+            if (error || !data || data.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: #a0aec0;">Belum ada catatan jurnal mengajar.</td></tr>';
+                return;
+            }
+
+            data.forEach(item => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${item.tanggal}</td>
+                        <td><strong style="color: #70c745;">${item.kelas}</strong></td>
+                        <td>${item.materi}</td>
+                        <td>${item.kegiatan || '-'}</td>
+                        <td>${item.catatan || '-'}</td>
+                    </tr>
+                `;
+            });
+        }
+    </script>
 </body>
 </html>
