@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Saya & Arsip - Portal PAI</title>
+    <!-- FontAwesome Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Top Nav Bar sederhana untuk kembali ke Beranda */
+        .top-bar {
+            background: #0f172a;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-back {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #1e293b;
+            padding: 6px 14px;
+            border-radius: 6px;
+            border: 1px solid #334155;
+            transition: all 0.2s;
+        }
+
+        .btn-back:hover {
+            background: #334155;
+            color: #60a5fa;
+        }
+
+        /* Header Gaya Blogspot */
+        .blog-header {
+            background: #1a365d;
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 4px solid #2b6cb0;
+        }
+
+        .blog-header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .blog-header p {
+            color: #cbd5e0;
+            font-size: 1rem;
+        }
+
+        /* Layout Blogspot (Sidebar Kiri & Main Content) */
+        .blog-container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+        }
+
+        /* --- SIDEBAR KIRI --- */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .widget-box {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .widget-title {
+            font-size: 1.1rem;
+            color: #2d3748;
+            border-bottom: 2px solid #3182ce;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Tombol Utama Bersusun 2 (Samping Kiri) */
+        .main-btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .btn-main {
+            background-color: #ebf8ff;
+            color: #2b6cb0;
+            border: 1px solid #bee3f8;
+            padding: 0.8rem 1rem;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .btn-main:hover {
+            background-color: #3182ce;
+            color: white;
+        }
+
+        .btn-main.active {
+            background-color: #2b6cb0;
+            color: white;
+            border-color: #2b6cb0;
+            box-shadow: 0 2px 5px rgba(43, 108, 176, 0.3);
+        }
+
+        /* Submenu Navigasi Vertikal */
+        .sub-menu-list {
+            list-style: none;
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .btn-sub {
+            width: 100%;
+            text-align: left;
+            background: transparent;
+            border: none;
+            padding: 0.6rem 0.8rem;
+            color: #4a5568;
+            font-size: 0.95rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-sub:hover {
+            background-color: #edf2f7;
+            color: #2d3748;
+        }
+
+        .btn-sub.active {
+            background-color: #e2e8f0;
+            color: #2b6cb0;
+            font-weight: 600;
+        }
+
+        /* --- KONTEN UTAMA (TENGAH) --- */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* Kotak Motivasi / Slogan Diri */
+        .quote-box {
+            background: linear-gradient(135deg, #2b6cb0, #1a365d);
+            color: white;
+            padding: 1.8rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            position: relative;
+        }
+
+        .quote-box i.quote-icon {
+            font-size: 2rem;
+            opacity: 0.3;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+        }
+
+        .slogan-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #90cdf4;
+            margin-bottom: 0.5rem;
+        }
+
+        .quote-text {
+            font-size: 1.25rem;
+            font-style: italic;
+            font-weight: 300;
+            margin-bottom: 0.8rem;
+            line-height: 1.5;
+        }
+
+        .author {
+            font-size: 0.9rem;
+            color: #e2e8f0;
+            font-weight: 600;
+        }
+
+        /* Area Display Berkas/Pustaka */
+        .content-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            min-height: 300px;
+        }
+
+        .content-title {
+            font-size: 1.3rem;
+            color: #2d3748;
+            border-bottom: 2px solid #edf2f7;
+            padding-bottom: 0.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .item-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .item-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 1rem;
+            text-align: center;
+            background: #faf5ff;
+            transition: transform 0.2s;
+        }
+
+        .item-card:hover {
+            transform: translateY(-3px);
+            border-color: #cbd5e0;
+        }
+
+        .item-card i {
+            font-size: 2rem;
+            color: #3182ce;
+            margin-bottom: 0.5rem;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .blog-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Bar Atas untuk kembali ke Beranda -->
+    <div class="top-bar">
+        <a href="index.html" class="btn-back">
+            <i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda
+        </a>
+    </div>
+
+    <!-- Header Blog -->
+    <header class="blog-header">
+        <h1>PORTAL & ARSIP PERSONAL</h1>
+        <p>Dokumentasi Berkas, Pustaka, & Catatan Perjalanan</p>
+    </header>
+
+    <div class="blog-container">
+
+        <!-- SIDEBAR KIRI -->
+        <aside class="sidebar">
+            <div class="widget-box">
+                <h3 class="widget-title"><i class="fa-solid fa-compass"></i> Navigasi Arsip</h3>
+                
+                <div class="main-btn-group">
+                    <button class="btn-main active" id="btn-berkas" onclick="switchMainTab('berkas')">
+                        <span><i class="fa-solid fa-folder-closed"></i> BERKAS</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                    <button class="btn-main" id="btn-pustaka" onclick="switchMainTab('pustaka')">
+                        <span><i class="fa-solid fa-book"></i> PUSTAKA</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <!-- Submenu BERKAS -->
+                <ul id="sub-berkas" class="sub-menu-list">
+                    <li><button class="btn-sub active" onclick="showContent('berkas-pribadi', this)"><i class="fa-regular fa-id-card"></i> Berkas Pribadi</button></li>
+                    <li><button class="btn-sub" onclick="showContent('berkas-keluarga', this)"><i class="fa-solid fa-users"></i> Berkas Keluarga</button></li>
+                    <li><button class="btn-sub" onclick="showContent('berkas-kerja', this)"><i class="fa-solid fa-briefcase"></i> Berkas Kerja</button></li>
+                    <li><button class="btn-sub" onclick="showContent('foto', this)"><i class="fa-regular fa-image"></i> Foto</button></li>
+                    <li><button class="btn-sub" onclick="showContent('sertifikat', this)"><i class="fa-solid fa-award"></i> Sertifikat</button></li>
+                </ul>
+
+                <!-- Submenu PUSTAKA -->
+                <ul id="sub-pustaka" class="sub-menu-list hidden">
+                    <li><button class="btn-sub active" onclick="showContent('koleksi-buku', this)"><i class="fa-solid fa-book-open"></i> Koleksi Buku</button></li>
+                    <li><button class="btn-sub" onclick="showContent('artikel', this)"><i class="fa-regular fa-newspaper"></i> Artikel & Tulisan</button></li>
+                    <li><button class="btn-sub" onclick="showContent('catatan', this)"><i class="fa-regular fa-note-sticky"></i> Catatan Pembelajaran</button></li>
+                    <li><button class="btn-sub" onclick="showContent('referensi', this)"><i class="fa-solid fa-bookmark"></i> Referensi Favorit</button></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- AREA UTAMA / TENGAH -->
+        <main class="main-content">
+
+            <!-- KOTAK MOTIVASI / SLOGAN DIRI -->
+            <div class="quote-box">
+                <i class="fa-solid fa-quote-right quote-icon"></i>
+                <div class="slogan-title">Motto & Prinsip Hidup</div>
+                <div class="quote-text">
+                    "Pendidikan adalah senjata paling mematikan di dunia, karena dengan pendidikan Anda dapat mengubah dunia."
+                </div>
+                <div class="author">- Nelson Mandela</div>
+            </div>
+
+            <!-- AREA KONTEN -->
+            <div class="content-card">
+                
+                <!-- Konten Berkas -->
+                <div id="berkas-pribadi" class="content-box">
+                    <h3 class="content-title"><i class="fa-solid fa-id-card"></i> Berkas Pribadi</h3>
+                    <p>Unduh atau lihat dokumen identitas diri secara lengkap di bawah ini:</p>
+                    <div class="item-grid">
+                        <div class="item-card"><i class="fa-solid fa-file-pdf"></i><p>KTP & SIM.pdf</p></div>
+                        <div class="item-card"><i class="fa-solid fa-file-pdf"></i><p>Ijazah Terakhir.pdf</p></div>
+                    </div>
+                </div>
+
+                <div id="berkas-keluarga" class="content-box hidden">
+                    <h3 class="content-title"><i class="fa-solid fa-users"></i> Berkas Keluarga</h3>
+                    <p>Dokumen pendukung administrasi keluarga:</p>
+                    <div class="item-grid">
+                        <div class="item-card"><i class="fa-solid fa-file-pdf"></i><p>Kartu Keluarga.pdf</p></div>
+                        <div class="item-card"><i class="fa-solid fa-file-pdf"></i><p>Akta Kelahiran.pdf</p></div>
+                    </div>
+                </div>
+
+                <div id="berkas-kerja" class="content-box hidden">
+                    <h3 class="content-title"><i class="fa-solid fa-briefcase"></i> Berkas Kerja</h3>
+                    <p>Dokumen portofolio karir dan riwayat pekerjaan:</p>
+                    <div class="item-grid">
+                        <div class="item-card"><i class="fa-solid fa-file-word"></i><p>Curriculum Vitae (CV)</p></div>
+                        <div class="item-card"><i class="fa-solid fa-file-pdf"></i><p>Surat Pengalaman Kerja</p></div>
+                    </div>
+                </div>
+
+                <div id="foto" class="content-box hidden">
+                    <h3 class="content-title"><i class="fa-solid fa-image"></i> Galeri Foto</h3>
+                    <p>Dokumentasi foto diri dan kegiatan resmi:</p>
+                    <div class="item-grid">
+                        <div class="item-card"><i class="fa-solid fa-image"></i><p>Pas Foto Resmi</p></div>
+                    </div>
+                </div>
+
+                <div id="sertifikat" class="content-box hidden">
+                    <h3 class="content-title"><i class="fa-solid fa-award"></i> Sertifikat</h3>
+                    <p>Kumpulan sertifikat pelatihan dan penghargaan:</p>
+                    <div class="item-grid">
+                        <div class="item-card"><i class="fa-solid fa-certificate"></i><p>Sertifikat Pelatihan PAI</p></div>
+                    </div>
+                </div>
+
+                <!-- Konten Pustaka -->
+                <div id="koleksi-buku" class="content-box hidden">
+                    <h3 class="content-title"><i class="fa-solid fa-book-open"></i> Koleksi Buku</h3>
+                    <p>Koleksi e-book dan referensi bacaan digital:</p>
+                    <div class="item-grid">
+                        <div class="item-card"><i class="fa-solid fa-book"></i><p>Buku Pedagogi Modern</p></div>
+                    </div>
+                </div>
+
+                <div id="artikel" class="content-box hidden">
+                    <h3 class="content-title"><i class="fa-solid fa-newspaper"></i> Artikel & Tulisan</h3>
+                    <p>Arsip opini dan karya tulis ilmiah:</p>
+                    <div class="item-grid">
+                        <div class="item-card"><i class="fa-solid fa-newspaper"></i><p>Artikel Pendidikan 2024</p></div>
+                    </div>
+                </div>
+
+                <div id="catatan" class="content-box hidden">
+                    <h3 class="content-title"><i class="fa-solid fa-note-sticky"></i> Catatan Pembelajaran</h3>
+                    <p>Catatan dan rangkuman materi ringkas:</p>
+                    <div class="item-grid">
+                        <div class="item-card"><i class="fa-solid fa-notes-medical"></i><p>Rangkuman Webinar</p></div>
+                    </div>
+                </div>
+
+                <div id="referensi" class="content-box hidden">
+                    <h3 class="content-title"><i class="fa-solid fa-bookmark"></i> Referensi Favorit</h3>
+                    <p>Tautan dan rujukan situs web penting:</p>
+                    <div class="item-grid">
+                        <div class="item-card"><i class="fa-solid fa-link"></i><p>Kemdikbud Ristek</p></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <script>
+        function switchMainTab(type) {
+            document.getElementById('btn-berkas').classList.toggle('active', type === 'berkas');
+            document.getElementById('btn-pustaka').classList.toggle('active', type === 'pustaka');
+
+            const subBerkas = document.getElementById('sub-berkas');
+            const subPustaka = document.getElementById('sub-pustaka');
+
+            if (type === 'berkas') {
+                subBerkas.classList.remove('hidden');
+                subPustaka.classList.add('hidden');
+                subBerkas.querySelector('.btn-sub').click();
+            } else {
+                subBerkas.classList.add('hidden');
+                subPustaka.classList.remove('hidden');
+                subPustaka.querySelector('.btn-sub').click();
+            }
+        }
+
+        function showContent(contentId, btnElement) {
+            const allBoxes = document.querySelectorAll('.content-box');
+            allBoxes.forEach(box => box.classList.add('hidden'));
+
+            const targetBox = document.getElementById(contentId);
+            if(targetBox) {
+                targetBox.classList.remove('hidden');
+            }
+
+            const activeSubNav = btnElement.closest('.sub-menu-list');
+            const subButtons = activeSubNav.querySelectorAll('.btn-sub');
+            subButtons.forEach(btn => btn.classList.remove('active'));
+
+            btnElement.classList.add('active');
+        }
+    </script>
+</body>
+</html>
