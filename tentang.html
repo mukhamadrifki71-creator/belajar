@@ -19,8 +19,9 @@
             align-items: center;
         }
 
+        /* Tombol Kembali ke Beranda (Teks Hijau) */
         .btn-back {
-            color: #ffffff;
+            color: #22c55e; /* Warna teks hijau */
             text-decoration: none;
             font-size: 0.9rem;
             display: inline-flex;
@@ -29,13 +30,14 @@
             background: #1e293b;
             padding: 6px 14px;
             border-radius: 6px;
-            border: 1px solid #334155;
+            border: 1px solid #16a34a; /* Border hijau */
             transition: all 0.2s;
+            font-weight: 600;
         }
 
         .btn-back:hover {
-            background: #334155;
-            color: #60a5fa;
+            background: #16a34a;
+            color: #ffffff; /* Berubah putih saat di-hover */
         }
 
         /* Banner Atas Halaman */
@@ -182,22 +184,33 @@
             margin: 0;
         }
 
+        /* Tombol Sembunyikan Dokumen (Teks & Icon Warna Hijau) */
         .btn-hide {
-            background: #fff5f5;
-            color: #e53e3e;
-            border: 1px solid #fed7d7;
+            background: #f0fdf4;
+            color: #16a34a; /* Warna teks hijau */
+            border: 1px solid #bbf7d0;
             padding: 6px 12px;
             border-radius: 4px;
             cursor: pointer;
             font-size: 0.85rem;
+            font-weight: 600;
             display: inline-flex;
             align-items: center;
             gap: 5px;
             margin-top: 0.5rem;
+            transition: all 0.2s;
+        }
+
+        .btn-hide i {
+            color: #16a34a; /* Warna ikon hijau */
         }
 
         .btn-hide:hover {
-            background: #e53e3e;
+            background: #16a34a;
+            color: white; /* Berubah putih saat di-hover */
+        }
+
+        .btn-hide:hover i {
             color: white;
         }
 
