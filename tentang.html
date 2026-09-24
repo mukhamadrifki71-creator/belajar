@@ -8,24 +8,8 @@
     <link rel="stylesheet" href="style.css?v=4">
     <!-- FontAwesome Icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
-<body>
 
-    <!-- Header / Navigasi -->
-    <header>
-        <div class="logo"><i class="fa-solid fa-mosque"></i> PAInesia</div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Beranda</a></li>
-                <li><a href="perangkat.html" class="active">Perencanaan Pembelajaran</a></li>
-                <li><a href="pelaksanaan.html">Pelaksanaan Pembelajaran</a></li>
-                <li><a href="index.html#about">Tugas Lainnya</a></li>
-                <li><a href="index.html#contact">Tentang Saya</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
+    <style>
         /* Top Nav Bar sederhana untuk kembali ke Beranda */
         .top-bar {
             background: #0f172a;
@@ -151,6 +135,7 @@
             display: flex;
             flex-direction: column;
             gap: 0.4rem;
+            padding: 0;
         }
 
         .btn-sub {
@@ -288,6 +273,20 @@
 </head>
 <body>
 
+    <!-- Header / Navigasi Utama -->
+    <header>
+        <div class="logo"><i class="fa-solid fa-mosque"></i> PAInesia</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="perangkat.html" class="active">Perencanaan Pembelajaran</a></li>
+                <li><a href="pelaksanaan.html">Pelaksanaan Pembelajaran</a></li>
+                <li><a href="index.html#about">Tugas Lainnya</a></li>
+                <li><a href="index.html#contact">Tentang Saya</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <!-- Bar Atas untuk kembali ke Beranda -->
     <div class="top-bar">
         <a href="index.html" class="btn-back">
@@ -295,7 +294,7 @@
         </a>
     </div>
 
-    <!-- Header Blog -->
+    <!-- Header Sub-Halaman -->
     <header class="blog-header">
         <h1>PORTAL & ARSIP PERSONAL</h1>
         <p>Dokumentasi Berkas, Pustaka, & Catatan Perjalanan</p>
